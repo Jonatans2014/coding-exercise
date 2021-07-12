@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Accela coding exercise</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container my-2">
+    <h1>Accela coding exercise</h1>
+    <tr> Number of persons:</tr>
+    <td th:each="noOfPersons : ${noOfPersons}">
+        <a th:text="${noOfPersons}"/></a></td>
+    </tr>
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th width="auto">Name</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${listPersons}">
+            <td>
+                <a th:href="@{/person/__${person.id}__}" th:text="${person.firstName + ' ' + person.lastName}"/></a>
+            </td>
+            <td valign="top">
+                <table class="table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>PostalCode</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="address : ${person.address}">
+                        <td th:text="${address?.street}"></td>
+                        <td th:text="${address?.city}"></td>
+                        <td th:text="${address?.state}"></td>
+                        <td th:text="${address?.postalCode}"></td>
+                    </tr>
+                </table>
+            <td width="auto">
+                <a th:href="@{/deletePerson/{id}(id=${person.id})}" class="btn btn-danger">Delete Person</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/add/new/person}" class="btn btn-primary btn-sm mb-3"> Add Person</a>
+</div>
+</body>
+</html>
