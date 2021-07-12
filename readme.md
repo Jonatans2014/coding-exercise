@@ -13,6 +13,13 @@ java -jar target/coding-exercise-0.0.1-SNAPSHOT.jar
 ```
 ./mvnw test
 ```
+Technologies used on this app are:
+* Spring Boot
+* Thymeleaf
+* Mockito
+* jUnit Jupiter  
+* H2 in-memory DB
+
 You can then access the app here: http://localhost:8080/
 
 <img width="1042" alt="home-page" src="https://user-images.githubusercontent.com/15609932/125278331-7f4f1780-e30a-11eb-86c2-10ec6089d196.PNG">
